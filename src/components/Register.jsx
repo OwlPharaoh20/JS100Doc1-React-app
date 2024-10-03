@@ -8,13 +8,13 @@ const Register = () => {
   const [password, setPassword] = useState('');
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault(); // Prevent default form submission behavior
     try {
       const response = await axios.post('http://localhost:5000/api/auth/register', { username, email, password });
-      console.log('User registered:', response.data);
-      // Optionally redirect to login or show a success message
+      console.log('User registered:', response.data); // Log successful registration
     } catch (error) {
-      console.error('Registration failed:', error);
+      // Log detailed error response from the backend
+      console.error('Registration failed:', error.response?.data || error.message);
     }
   };
 
